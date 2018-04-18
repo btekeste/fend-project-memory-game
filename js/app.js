@@ -56,18 +56,9 @@ function cardClicked(e) {
 	prevCard = "";
 	countMoves();
 
-	// All cards were matched
+	// All cards are matched
 	if (openCards.length == 8) {
-		sleep(3000).then(() => {
-			var myContainer = document.querySelector('.container');
-			var lastPageContent = "<header><h1>Congratulation! You Won!</h1></header>";
-			lastPageContent += "<section class='score-panel'>";
-			lastPageContent += document.querySelector('.score-panel').innerHTML;
-			lastPageContent += "</section>";
-			lastPageContent += "<h1 style='text-align: center;'>Woooooo!</h1>";
-			myContainer.innerHTML=lastPageContent;
-			myContainer.style.padding = '200px 0';
-		});
+		sleep(3000).then(() => {congrats()});
 	}
 }
 
@@ -102,8 +93,22 @@ function hideCard() {
 /*
  * Sleep function from https://stackoverflow.com/a/39914235
  */
-function sleep (time) {
+function sleep(time) {
 	return new Promise((resolve) => setTimeout(resolve, time));
+}
+
+/*
+ * Congrats page
+ */
+function congrats() {
+	let myContainer = document.querySelector('.container');
+	let lastPageContent = "<header><h1>Congratulation! You Won!</h1></header>";
+	lastPageContent += "<section class='score-panel'>";
+	lastPageContent += document.querySelector('.score-panel').innerHTML;
+	lastPageContent += "</section>";
+	lastPageContent += "<h1 style='text-align: center;'>Woooooo!</h1>";
+	myContainer.innerHTML=lastPageContent;
+	myContainer.style.padding = '200px 0';
 }
 
 /*
@@ -137,9 +142,10 @@ window.onload = function() {
 	shuffleItems = document.querySelectorAll('.deck > li');
     shuffleItems = shuffle(Array.from(shuffleItems));
 
-	for (var i in shuffleItems) {
+	for (let i in shuffleItems) {
 		document.querySelector('.deck').appendChild(shuffleItems[i]);
 	}
+	setInterval(setTime, 1000);
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -155,3 +161,27 @@ function shuffle(array) {
     }
     return array;
 }
+
+/*
+ * Count Up Timer function from https://stackoverflow.com/a/5517836
+ */
+var minutesLabel = document.getElementById("minutes");
+var secondsLabel = document.getElementById("seconds");
+var totalSeconds = 0;
+setInterval(setTime, 1000);
+
+function setTime() {
+  ++totalSeconds;
+  secondsLabel.innerHTML = pad(totalSeconds % 60);
+  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+}
+
+function pad(val) {
+  var valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+}
+
