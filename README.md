@@ -7,14 +7,9 @@
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
-
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+The Memory Game is the classic card game where you have to match cards with the same figure. This game was implemented with 16 cards, start rating of one to 3 and a timer to track user performance.
+This project was forked from Udacity Front-End program and evaluated by Udacity code reviewers.
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+Feel free to send me pull requests if you interested in extending the Memory Game.
